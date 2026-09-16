@@ -1,0 +1,51 @@
+# xcodegen generate 로 UOUCampus.xcodeproj 를 만든다.
+name: UOUCampus
+options:
+  bundleIdPrefix: site.uoucampus
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+targets:
+  UOUCampus:
+    type: application
+    platform: iOS
+    sources:
+      - path: UOUCampus
+      # 캠퍼스 그래프와 마스코트는 웹과 같은 파일을 쓴다. 편집 모드에서 고친 지도가 앱에도 그대로 실린다.
+      - path: ../Client/src/data/campus.json
+        buildPhase: resources
+      - path: ../Client/src/components/TimetableSheet/ulrinee-campus-tour.webp
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: site.uoucampus.app
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_CFBundleDisplayName: "캠퍼스 길찾기"
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "지금 서 있는 곳에서 출발하고, 걷는 동안 경로 위 어디쯤인지 알려 주는 데 씁니다."
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+  UOUCampusTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [UOUCampusTests]
+    dependencies:
+      - target: UOUCampus
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: site.uoucampus.tests
+schemes:
+  UOUCampus:
+    build:
+      targets:
+        UOUCampus: all
+    test:
+      targets: [UOUCampusTests]

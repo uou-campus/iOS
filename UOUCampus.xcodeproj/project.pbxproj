@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2914714B2CCBA81793DCEFE0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E8E16FA18E655B9873433 /* App.swift */; };
+		29AEC8B40D88E7DBC1BF0E7B /* TimetableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB18068EF8434A3B6907995 /* TimetableSheet.swift */; };
+		423D9DB19C8D66E7E4F6C512 /* Guidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA792280C9D1902E56C62FF9 /* Guidance.swift */; };
+		43D7DD296284C59596BFD95D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E9C28B58F8CDE9FC0F4D6 /* Theme.swift */; };
+		51A62C679B157F299B431110 /* CampusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3F75DF36B0FC0D209B107 /* CampusMapView.swift */; };
+		5D977F0C46080AF291A3E274 /* RoutePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC20EB6D11AB54EBD65516DC /* RoutePanel.swift */; };
+		6FA514AFBA9414E13025FC36 /* RoutingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764F0C6E6D6C12058E4C299 /* RoutingTests.swift */; };
+		7B05C18872E17912FAF32A51 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3420485F61C8B9845BA7A55 /* Timetable.swift */; };
+		8DA8B9891169AD95B6983910 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1926B84A54F3016E46E8CAB5 /* Routing.swift */; };
+		A0C6FFB9F34794C3C00CC3A5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFE3E7108D65F4CBDEAE609 /* AppModel.swift */; };
+		AFA0A15FD901E13AC1481FD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DE2BD77E93E42E85229AF /* ContentView.swift */; };
+		B2F2119DDDAE59F8C6C2E14D /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5459218B9786EBBBC1DE976 /* Locator.swift */; };
+		BDF52E8739F77622CEA9A99A /* TimetableOCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A71B806B321FA60E2935E /* TimetableOCR.swift */; };
+		D3B7FB8972F2082DE8660BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8886A50BADAA577175EB2B /* Assets.xcassets */; };
+		D5BE47DDFC9CE20ABB5D88F7 /* ulrinee-campus-tour.webp in Resources */ = {isa = PBXBuildFile; fileRef = E8B2E4B860442E4FBDAB62AA /* ulrinee-campus-tour.webp */; };
+		EFEDEDA64C8FF4B9031F698B /* PlacePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F068A82D3D3CB92C6558E84E /* PlacePicker.swift */; };
+		FE17BDC0FE303723212F14D6 /* campus.json in Resources */ = {isa = PBXBuildFile; fileRef = EDE2B8F17E1CAC148A252DE6 /* campus.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B62D2AFC3E69ADE3C422760 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1DA4B03A69E621309E0D3D48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E05157CB5E561180D8258902;
+			remoteInfo = UOUCampus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		105E8E16FA18E655B9873433 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		15B3F75DF36B0FC0D209B107 /* CampusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusMapView.swift; sourceTree = "<group>"; };
+		1926B84A54F3016E46E8CAB5 /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		1EFE3E7108D65F4CBDEAE609 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		4086FFF3B662124BD665FDBC /* UOUCampus.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = UOUCampus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A8886A50BADAA577175EB2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7764F0C6E6D6C12058E4C299 /* RoutingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingTests.swift; sourceTree = "<group>"; };
+		7F6A71B806B321FA60E2935E /* TimetableOCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableOCR.swift; sourceTree = "<group>"; };
+		B55E9C28B58F8CDE9FC0F4D6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BC20EB6D11AB54EBD65516DC /* RoutePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePanel.swift; sourceTree = "<group>"; };
+		D37DE2BD77E93E42E85229AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DAB18068EF8434A3B6907995 /* TimetableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableSheet.swift; sourceTree = "<group>"; };
+		E304F2C70EFC426E520A6B38 /* UOUCampusTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = UOUCampusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3420485F61C8B9845BA7A55 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		E5459218B9786EBBBC1DE976 /* Locator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
+		E8B2E4B860442E4FBDAB62AA /* ulrinee-campus-tour.webp */ = {isa = PBXFileReference; path = "ulrinee-campus-tour.webp"; sourceTree = "<group>"; };
+		EDE2B8F17E1CAC148A252DE6 /* campus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = campus.json; sourceTree = "<group>"; };
+		F068A82D3D3CB92C6558E84E /* PlacePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePicker.swift; sourceTree = "<group>"; };
+		FA792280C9D1902E56C62FF9 /* Guidance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guidance.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1552C1073A951DAA71305AB9 /* UOUCampus */ = {
+			isa = PBXGroup;
+			children = (
+				105E8E16FA18E655B9873433 /* App.swift */,
+				1EFE3E7108D65F4CBDEAE609 /* AppModel.swift */,
+				5A8886A50BADAA577175EB2B /* Assets.xcassets */,
+				15B3F75DF36B0FC0D209B107 /* CampusMapView.swift */,
+				D37DE2BD77E93E42E85229AF /* ContentView.swift */,
+				FA792280C9D1902E56C62FF9 /* Guidance.swift */,
+				E5459218B9786EBBBC1DE976 /* Locator.swift */,
+				F068A82D3D3CB92C6558E84E /* PlacePicker.swift */,
+				BC20EB6D11AB54EBD65516DC /* RoutePanel.swift */,
+				1926B84A54F3016E46E8CAB5 /* Routing.swift */,
+				B55E9C28B58F8CDE9FC0F4D6 /* Theme.swift */,
+				E3420485F61C8B9845BA7A55 /* Timetable.swift */,
+				7F6A71B806B321FA60E2935E /* TimetableOCR.swift */,
+				DAB18068EF8434A3B6907995 /* TimetableSheet.swift */,
+			);
+			path = UOUCampus;
+			sourceTree = "<group>";
+		};
+		4BC6E0F6BB4BAA8A82D61780 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4086FFF3B662124BD665FDBC /* UOUCampus.app */,
+				E304F2C70EFC426E520A6B38 /* UOUCampusTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA8F87E161FD65E03002BE6F = {
+			isa = PBXGroup;
+			children = (
+				CB1FA959A180CCB84D765D7B /* data */,
+				C47F80334DC75DCBD5750B7D /* TimetableSheet */,
+				1552C1073A951DAA71305AB9 /* UOUCampus */,
+				FAED0BF76A676D36F6B39ABF /* UOUCampusTests */,
+				4BC6E0F6BB4BAA8A82D61780 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C47F80334DC75DCBD5750B7D /* TimetableSheet */ = {
+			isa = PBXGroup;
+			children = (
+				E8B2E4B860442E4FBDAB62AA /* ulrinee-campus-tour.webp */,
+			);
+			name = TimetableSheet;
+			path = ../Client/src/components/TimetableSheet;
+			sourceTree = "<group>";
+		};
+		CB1FA959A180CCB84D765D7B /* data */ = {
+			isa = PBXGroup;
+			children = (
+				EDE2B8F17E1CAC148A252DE6 /* campus.json */,
+			);
+			name = data;
+			path = ../Client/src/data;
+			sourceTree = "<group>";
+		};
+		FAED0BF76A676D36F6B39ABF /* UOUCampusTests */ = {
+			isa = PBXGroup;
+			children = (
+				7764F0C6E6D6C12058E4C299 /* RoutingTests.swift */,
+			);
+			path = UOUCampusTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		286D560E2C41E5F68A23BE47 /* UOUCampusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4470479FDD7A7823F1DF314D /* Build configuration list for PBXNativeTarget "UOUCampusTests" */;
+			buildPhases = (
+				27CCD2E6D3DEAFBEFEA4B7D8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C53F83C0A42E447F26414365 /* PBXTargetDependency */,
+			);
+			name = UOUCampusTests;
+			packageProductDependencies = (
+			);
+			productName = UOUCampusTests;
+			productReference = E304F2C70EFC426E520A6B38 /* UOUCampusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E05157CB5E561180D8258902 /* UOUCampus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB876E1E66CB724866140B1C /* Build configuration list for PBXNativeTarget "UOUCampus" */;
+			buildPhases = (
+				CB1DBE51A9326F29415F3DF5 /* Sources */,
+				7EAE966E9FDDFD95CF2C24FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UOUCampus;
+			packageProductDependencies = (
+			);
+			productName = UOUCampus;
+			productReference = 4086FFF3B662124BD665FDBC /* UOUCampus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DA4B03A69E621309E0D3D48 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 8622F6C7B0E26FD573B57C14 /* Build configuration list for PBXProject "UOUCampus" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AA8F87E161FD65E03002BE6F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4BC6E0F6BB4BAA8A82D61780 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E05157CB5E561180D8258902 /* UOUCampus */,
+				286D560E2C41E5F68A23BE47 /* UOUCampusTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7EAE966E9FDDFD95CF2C24FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3B7FB8972F2082DE8660BDA /* Assets.xcassets in Resources */,
+				FE17BDC0FE303723212F14D6 /* campus.json in Resources */,
+				D5BE47DDFC9CE20ABB5D88F7 /* ulrinee-campus-tour.webp in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27CCD2E6D3DEAFBEFEA4B7D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FA514AFBA9414E13025FC36 /* RoutingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB1DBE51A9326F29415F3DF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2914714B2CCBA81793DCEFE0 /* App.swift in Sources */,
+				A0C6FFB9F34794C3C00CC3A5 /* AppModel.swift in Sources */,
+				51A62C679B157F299B431110 /* CampusMapView.swift in Sources */,
+				AFA0A15FD901E13AC1481FD9 /* ContentView.swift in Sources */,
+				423D9DB19C8D66E7E4F6C512 /* Guidance.swift in Sources */,
+				B2F2119DDDAE59F8C6C2E14D /* Locator.swift in Sources */,
+				EFEDEDA64C8FF4B9031F698B /* PlacePicker.swift in Sources */,
+				5D977F0C46080AF291A3E274 /* RoutePanel.swift in Sources */,
+				8DA8B9891169AD95B6983910 /* Routing.swift in Sources */,
+				43D7DD296284C59596BFD95D /* Theme.swift in Sources */,
+				7B05C18872E17912FAF32A51 /* Timetable.swift in Sources */,
+				BDF52E8739F77622CEA9A99A /* TimetableOCR.swift in Sources */,
+				29AEC8B40D88E7DBC1BF0E7B /* TimetableSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C53F83C0A42E447F26414365 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E05157CB5E561180D8258902 /* UOUCampus */;
+			targetProxy = 3B62D2AFC3E69ADE3C422760 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		132B041DBA08C3A73265D46C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = site.uoucampus.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UOUCampus.app/UOUCampus";
+			};
+			name = Release;
+		};
+		3DF1F193A31FA75DF3EB5F93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = site.uoucampus.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UOUCampus.app/UOUCampus";
+			};
+			name = Debug;
+		};
+		5CAAFA325330CE020AE7AC19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8401050B223886CEC094A093 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "캠퍼스 길찾기";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지금 서 있는 곳에서 출발하고, 걷는 동안 경로 위 어디쯤인지 알려 주는 데 씁니다.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = site.uoucampus.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		BB5CE53EA1593E78DBB75264 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E5A95DACE5B95AB5FD5D4830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "캠퍼스 길찾기";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지금 서 있는 곳에서 출발하고, 걷는 동안 경로 위 어디쯤인지 알려 주는 데 씁니다.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = site.uoucampus.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4470479FDD7A7823F1DF314D /* Build configuration list for PBXNativeTarget "UOUCampusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DF1F193A31FA75DF3EB5F93 /* Debug */,
+				132B041DBA08C3A73265D46C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8622F6C7B0E26FD573B57C14 /* Build configuration list for PBXProject "UOUCampus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CAAFA325330CE020AE7AC19 /* Debug */,
+				BB5CE53EA1593E78DBB75264 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AB876E1E66CB724866140B1C /* Build configuration list for PBXNativeTarget "UOUCampus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5A95DACE5B95AB5FD5D4830 /* Debug */,
+				8401050B223886CEC094A093 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DA4B03A69E621309E0D3D48 /* Project object */;
+}
