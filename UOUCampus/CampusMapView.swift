@@ -35,9 +35,9 @@ struct CampusMapView: UIViewRepresentable {
     /* 타일은 19단계까지다. 더 당기면 바탕이 빈다. */
     map.cameraZoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 250)
 
-    let tiles = MKTileOverlay(urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
+    let tiles = OverzoomTileOverlay(urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
     tiles.canReplaceMapContent = true
-    tiles.maximumZ = 19
+    tiles.maximumZ = 22
     map.addOverlay(tiles, level: .aboveLabels)
     map.addOverlays(MapCoordinator.baseOverlays(model.graph), level: .aboveLabels)
 
@@ -59,6 +59,26 @@ struct CampusMapView: UIViewRepresentable {
 
   func updateUIView(_ map: LayoutMapView, context: Context) {
     context.coordinator.update(map, self)
+  }
+}
+
+/// OSM 타일은 19단계까지다. 걷는 배율은 그보다 깊어서 MapKit 이 바탕을 비운다 — 19단계 타일을 잘라 채운다.
+final class OverzoomTileOverlay: MKTileOverlay {
+  private let nativeZ = 19
+
+  override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {
+    let dz = path.z - nativeZ
+    guard dz > 0 else { return super.loadTile(at: path, result: result) }
+    var parent = path
+    parent.x >>= dz
+    parent.y >>= dz
+    parent.z = nativeZ
+    super.loadTile(at: parent) { data, error in
+      guard let data, let image = UIImage(data: data)?.cgImage else { return result(nil, error) }
+      let side = image.width >> dz
+      let crop = CGRect(x: (path.x - (parent.x << dz)) * side, y: (path.y - (parent.y << dz)) * side, width: side, height: side)
+      result(image.cropping(to: crop).flatMap { UIImage(cgImage: $0).pngData() }, nil)
+    }
   }
 }
 
