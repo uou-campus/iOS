@@ -35,9 +35,9 @@ struct CampusMapView: UIViewRepresentable {
     /* 타일은 19단계까지다. 더 당기면 바탕이 빈다. */
     map.cameraZoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 250)
 
-    let tiles = MKTileOverlay(urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
+    let tiles = OverzoomTileOverlay(urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
     tiles.canReplaceMapContent = true
-    tiles.maximumZ = 19
+    tiles.maximumZ = 22
     map.addOverlay(tiles, level: .aboveLabels)
     map.addOverlays(MapCoordinator.baseOverlays(model.graph), level: .aboveLabels)
 
@@ -59,6 +59,26 @@ struct CampusMapView: UIViewRepresentable {
 
   func updateUIView(_ map: LayoutMapView, context: Context) {
     context.coordinator.update(map, self)
+  }
+}
+
+/// OSM 타일은 19단계까지다. 걷는 배율은 그보다 깊어서 MapKit 이 바탕을 비운다 — 19단계 타일을 잘라 채운다.
+final class OverzoomTileOverlay: MKTileOverlay {
+  private let nativeZ = 19
+
+  override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {
+    let dz = path.z - nativeZ
+    guard dz > 0 else { return super.loadTile(at: path, result: result) }
+    var parent = path
+    parent.x >>= dz
+    parent.y >>= dz
+    parent.z = nativeZ
+    super.loadTile(at: parent) { data, error in
+      guard let data, let image = UIImage(data: data)?.cgImage else { return result(nil, error) }
+      let side = image.width >> dz
+      let crop = CGRect(x: (path.x - (parent.x << dz)) * side, y: (path.y - (parent.y << dz)) * side, width: side, height: side)
+      result(image.cropping(to: crop).flatMap { UIImage(cgImage: $0).pngData() }, nil)
+    }
   }
 }
 
@@ -154,11 +174,12 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
       }
     }
 
-    /* 출발·도착이 바뀌면 경로가 다 보이게. 기준만 바꿀 때는 화면을 튀기지 않는다. */
+    /* 출발·도착이 바뀌면 경로가 다 보이게. 기준만 바꿀 때는 화면을 튀기지 않는다.
+       안내 중 길을 다시 찾았을 때는 발밑을 따라가던 화면을 그대로 둔다. */
     let legNow = view.route.map { "\($0.from.id)→\($0.to.id)" } ?? ""
     if legNow != legKey {
       legKey = legNow
-      if let route = view.route, route.points.count >= 2 { fit(map, route.points) }
+      if !view.guiding, let route = view.route, route.points.count >= 2 { fit(map, route.points) }
     }
 
     let followChanged = view.guiding != following
@@ -178,7 +199,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
     guard let view, size != lastSize, size.width > 0, size.height > 0 else { return }
     lastSize = size
     /* 폰을 돌렸다. 걷는 중이면 발밑으로, 아니면 보던 것을 다시 맞춘다. */
-    if following, let here = view.here {
+    if following, let here = view.here, !view.model.offCampus {
       map.setCenter(Self.coordinate(here), animated: false)
     } else if let request = fitRequest {
       fit(map, request.points, remember: request.remember)
@@ -307,7 +328,10 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
       hereShown = true
     }
 
-    if following && needsGuideZoom {
+    /* 캠퍼스 밖의 점을 쫓아가면 캠퍼스가 화면에서 사라진다. */
+    if view.model.offCampus {
+      return
+    } else if following && needsGuideZoom {
       needsGuideZoom = false
       zoom(map, to: center, level: max(Self.zoomLevel(map), 18))
     } else if following {

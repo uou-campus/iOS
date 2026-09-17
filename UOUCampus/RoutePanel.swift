@@ -111,7 +111,8 @@ struct PanelBody: View {
   }
 
   private var geoMessage: String? {
-    switch model.locator.status {
+    if model.offCampus { return "캠퍼스 밖이라 출발지로 못 씁니다" }
+    return switch model.locator.status {
     case .locating: "현위치를 찾는 중입니다"
     case .coarse: "아직 어림한 자리입니다 — 다듬는 중"
     case .denied: "위치 권한이 막혀 있습니다"
@@ -210,13 +211,13 @@ private struct ProgressBox: View {
           Text("경로에서 \(formatMeters(progress.offRoute))").font(.caption12).foregroundStyle(Theme.textTertiary)
         }
         if model.lost {
-          Text("경로에서 많이 벗어났습니다. 지도를 보고 되돌아가거나 출발지를 다시 잡으세요.")
+          Text(model.guiding ? "경로에서 벗어났습니다. 잠시 뒤 여기서부터 길을 다시 찾습니다." : "경로에서 많이 벗어났습니다. 지도를 보고 되돌아가거나 출발지를 다시 잡으세요.")
             .font(.caption12).foregroundStyle(Theme.warn)
         } else if model.steps.indices.contains(model.stepIndex) {
           Text(model.steps[model.stepIndex].text).font(.bodyStrong).foregroundStyle(Theme.textPrimary)
         }
       } else {
-        Text("위치를 기다리는 중입니다. 잡히면 경로 위 어디쯤인지 표시합니다.")
+        Text(model.offCampus ? "캠퍼스 밖에 있습니다. 들어서면 경로 위 어디쯤인지 표시합니다." : "위치를 기다리는 중입니다. 잡히면 경로 위 어디쯤인지 표시합니다.")
           .font(.caption12).foregroundStyle(Theme.warn)
       }
     }

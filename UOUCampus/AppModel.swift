@@ -51,8 +51,37 @@ final class AppModel {
       guard let self, self.claimFirstFix else { return }
       self.claimFirstFix = false
       /* 건물만 골라 붙이면 열에 일곱은 시작하자마자 '경로에서 벗어남' 이다. 길목까지 포함한다. */
-      if let near = self.graph.nearest(at) { self.fromId = near.node.id }
+      if let near = self.graph.nearest(at), near.meters <= Self.campusReach { self.fromId = near.node.id }
     }
+    locator.onFix = { [weak self] in self?.rerouteIfLost() }
+  }
+
+  /// 벗어난 채로 이만큼 지나면 선 자리에서 길을 다시 찾는다(초). GPS 가 한 번 튄 것으로는 안 바꾼다.
+  static let rerouteAfter = 5.0
+  @ObservationIgnored private var lostSince: Date?
+
+  /// 안내 중 한참 벗어나 있으면 지금 선 자리에서 가장 가까운 곳을 출발지로 다시 세운다.
+  private func rerouteIfLost() {
+    guard guiding, lost, locator.status == .ready, let here = locator.here else {
+      lostSince = nil
+      return
+    }
+    let since = lostSince ?? Date()
+    lostSince = since
+    /* 도착지 코앞이면 출발지와 도착지가 같아져 안내가 사라진다. */
+    guard Date().timeIntervalSince(since) >= Self.rerouteAfter,
+          let near = graph.nearest(here), near.node.id != toId else { return }
+    lostSince = nil
+    fromId = near.node.id
+  }
+
+  /// 가장 가까운 곳이 이보다 멀면 캠퍼스 밖이다(m). 정문 건너 정류장쯤까지는 봐준다.
+  static let campusReach = 300.0
+
+  /// 집에서 켜면 캠퍼스 끝 길목이 '현위치 근처' 로 들어앉고 지도는 집으로 날아간다.
+  var offCampus: Bool {
+    guard let here = locator.here else { return false }
+    return (graph.nearest(here)?.meters ?? .infinity) > Self.campusReach
   }
 
   private func recompute() {
@@ -90,7 +119,8 @@ final class AppModel {
   var unreachable: Bool { fromId != nil && toId != nil && fromId != toId && route == nil }
 
   var progress: RouteProgress? {
-    guard let route, let here = locator.here else { return nil }
+    /* 캠퍼스 밖이면 '경로에서 수만 km' 가 뜬다. 따라갈 게 없다. */
+    guard let route, let here = locator.here, !offCampus else { return nil }
     return Progress.track(route, here)
   }
 
