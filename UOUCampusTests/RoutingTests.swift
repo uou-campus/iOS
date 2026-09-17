@@ -25,6 +25,27 @@ final class RoutingTests: XCTestCase {
     XCTAssertEqual(Room.floor("7-615"), 6)
   }
 
+  /// 칸을 가로지르는 옅은 획 두 줄은 경계가 아니다. 틈 없이 맞붙은 다른 색 칸은 경계다.
+  func testTextStrokeDoesNotSplitBlock() {
+    let image = UIGraphicsImageRenderer(size: CGSize(width: 180, height: 300), format: {
+      let format = UIGraphicsImageRendererFormat()
+      format.scale = 1
+      return format
+    }()).image { ctx in
+      UIColor.white.setFill()
+      ctx.fill(CGRect(x: 0, y: 0, width: 180, height: 300))
+      UIColor(red: 242 / 255, green: 160 / 255, blue: 158 / 255, alpha: 1).setFill()
+      ctx.fill(CGRect(x: 0, y: 50, width: 180, height: 200))
+      UIColor(red: 250 / 255, green: 215 / 255, blue: 214 / 255, alpha: 1).setFill()
+      ctx.fill(CGRect(x: 8, y: 120, width: 164, height: 2))
+      UIColor(red: 143 / 255, green: 201 / 255, blue: 168 / 255, alpha: 1).setFill()
+      ctx.fill(CGRect(x: 0, y: 250, width: 180, height: 50))
+    }
+    let px = TimetableOCR.Pixels(image.cgImage!)!
+    let runs = TimetableOCR.runsInColumn(px, left: 0, right: 180, minHeight: 37)
+    XCTAssertEqual(runs.map { [$0.top, $0.bottom] }, [[50, 250], [250, 300]])
+  }
+
   func testTwelveHourRuler() {
     let marks = [9, 10, 11, 12, 1, 2].enumerated().map { TimetableOCR.HourMark(hour: Double($1), y: Double(100 + $0 * 60)) }
     XCTAssertEqual(TimetableOCR.readHourMarks(marks).map(\.hour), [9, 10, 11, 12, 13, 14])
