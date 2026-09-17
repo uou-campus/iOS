@@ -248,7 +248,7 @@ struct TopBar: View {
     }
 
     if model.lost && !arrived, let progress {
-      Text("경로에서 \(formatMeters(progress.offRoute)) 벗어났습니다.").font(.bodyStrong).foregroundStyle(Theme.warn)
+      Text("경로에서 \(formatMeters(progress.offRoute)) 벗어났습니다 — 곧 다시 찾습니다").font(.bodyStrong).foregroundStyle(Theme.warn)
     } else if progress != nil && !arrived, let detail = (next ?? current)?.text {
       Text(detail).font(.caption12).foregroundStyle(Theme.textSecondary).lineLimit(1)
     }

@@ -19,6 +19,8 @@ final class Locator: NSObject, CLLocationManagerDelegate {
 
   /// 쓸 만한 첫 좌표가 잡혔을 때 한 번.
   @ObservationIgnored var onFirstFix: ((LatLng) -> Void)?
+  /// 좌표가 올 때마다. 안내 중 경로를 벗어났는지 여기서 본다.
+  @ObservationIgnored var onFix: (() -> Void)?
   @ObservationIgnored private let manager = CLLocationManager()
   @ObservationIgnored private var pending = false
   @ObservationIgnored private var gotFix = false
@@ -92,6 +94,7 @@ final class Locator: NSObject, CLLocationManagerDelegate {
       pending = false
       onFirstFix?(at)
     }
+    onFix?()
   }
 
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

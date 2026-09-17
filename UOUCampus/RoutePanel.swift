@@ -211,7 +211,7 @@ private struct ProgressBox: View {
           Text("경로에서 \(formatMeters(progress.offRoute))").font(.caption12).foregroundStyle(Theme.textTertiary)
         }
         if model.lost {
-          Text("경로에서 많이 벗어났습니다. 지도를 보고 되돌아가거나 출발지를 다시 잡으세요.")
+          Text(model.guiding ? "경로에서 벗어났습니다. 잠시 뒤 여기서부터 길을 다시 찾습니다." : "경로에서 많이 벗어났습니다. 지도를 보고 되돌아가거나 출발지를 다시 잡으세요.")
             .font(.caption12).foregroundStyle(Theme.warn)
         } else if model.steps.indices.contains(model.stepIndex) {
           Text(model.steps[model.stepIndex].text).font(.bodyStrong).foregroundStyle(Theme.textPrimary)

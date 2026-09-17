@@ -174,11 +174,12 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
       }
     }
 
-    /* 출발·도착이 바뀌면 경로가 다 보이게. 기준만 바꿀 때는 화면을 튀기지 않는다. */
+    /* 출발·도착이 바뀌면 경로가 다 보이게. 기준만 바꿀 때는 화면을 튀기지 않는다.
+       안내 중 길을 다시 찾았을 때는 발밑을 따라가던 화면을 그대로 둔다. */
     let legNow = view.route.map { "\($0.from.id)→\($0.to.id)" } ?? ""
     if legNow != legKey {
       legKey = legNow
-      if let route = view.route, route.points.count >= 2 { fit(map, route.points) }
+      if !view.guiding, let route = view.route, route.points.count >= 2 { fit(map, route.points) }
     }
 
     let followChanged = view.guiding != following
