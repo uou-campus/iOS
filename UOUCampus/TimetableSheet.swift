@@ -190,6 +190,7 @@ private struct SlotRow: View {
         Picker("요일", selection: $slot.day) {
           ForEach(0..<5, id: \.self) { Text(weekdayLabels[$0]).tag($0) }
         }
+        /* 좁은 폭에서 `10:00` 이 `10:` 과 `00` 두 줄로 꺾였다. 시각은 제 너비를 지킨다. */
         Picker("시작 시각", selection: Binding(
           get: { slot.startMinutes },
           set: {
@@ -199,10 +200,12 @@ private struct SlotRow: View {
         )) {
           hours(8...22, keep: slot.startMinutes)
         }
+        .fixedSize()
         Text("–").foregroundStyle(Theme.textTertiary)
         Picker("끝 시각", selection: $slot.endMinutes) {
           hours(9...23, keep: slot.endMinutes, after: slot.startMinutes)
         }
+        .fixedSize()
         Spacer(minLength: 0)
         Button(action: onRemove) {
           Text("×").font(.system(size: 20)).foregroundStyle(Theme.textTertiary)
