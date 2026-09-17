@@ -198,7 +198,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
     guard let view, size != lastSize, size.width > 0, size.height > 0 else { return }
     lastSize = size
     /* 폰을 돌렸다. 걷는 중이면 발밑으로, 아니면 보던 것을 다시 맞춘다. */
-    if following, let here = view.here {
+    if following, let here = view.here, !view.model.offCampus {
       map.setCenter(Self.coordinate(here), animated: false)
     } else if let request = fitRequest {
       fit(map, request.points, remember: request.remember)
@@ -327,7 +327,10 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
       hereShown = true
     }
 
-    if following && needsGuideZoom {
+    /* 캠퍼스 밖의 점을 쫓아가면 캠퍼스가 화면에서 사라진다. */
+    if view.model.offCampus {
+      return
+    } else if following && needsGuideZoom {
       needsGuideZoom = false
       zoom(map, to: center, level: max(Self.zoomLevel(map), 18))
     } else if following {
