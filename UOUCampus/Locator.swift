@@ -31,6 +31,9 @@ final class Locator: NSObject, CLLocationManagerDelegate {
     super.init()
     manager.delegate = self
     manager.desiredAccuracy = kCLLocationAccuracyBest
+    manager.activityType = .fitness
+    /* 신호 기다리며 서 있으면 iOS 가 갱신을 멈추고, 다시 걸어도 점이 그 자리에 박혀 있다. */
+    manager.pausesLocationUpdatesAutomatically = false
   }
 
   func start() {
@@ -77,6 +80,8 @@ final class Locator: NSObject, CLLocationManagerDelegate {
 
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard status != .idle, let location = locations.last, location.horizontalAccuracy >= 0 else { return }
+    /* 켜자마자 오는 첫 좌표는 몇 분 전 딴 데서 잡아 둔 것일 수 있다. 웹의 maximumAge 처럼 5초 넘은 건 버린다. */
+    if location.timestamp.timeIntervalSinceNow < -5 { return }
     let at = LatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
     let usable = location.horizontalAccuracy <= usableAccuracy
     gotFix = true
