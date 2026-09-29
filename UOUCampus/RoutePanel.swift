@@ -332,7 +332,12 @@ private struct DirectionsList: View {
       }
       HStack(spacing: 8) {
         Circle().strokeBorder(Theme.gray900, lineWidth: 3).frame(width: 12, height: 12).frame(width: 18)
-        Text(Directions.arrival(route.to)).font(.body14).foregroundStyle(Theme.textPrimary)
+        VStack(alignment: .leading, spacing: 4) {
+          Text(Directions.arrival(route.to)).font(.body14).foregroundStyle(Theme.textPrimary)
+          if let access = route.to.access {
+            Text(access).font(.caption12).foregroundStyle(Theme.textTertiary)
+          }
+        }
       }
     }
     .padding(.horizontal, 16)
