@@ -39,6 +39,10 @@ struct CampusNode: Codable, Identifiable, Hashable {
   let lng: Double
   /// `approx` 면 아직 걸어 보고 확인하지 않은 좌표.
   let precision: String
+  /// 의무실. 지도에 빨간 점으로 따로 찍는다.
+  var medical: Bool?
+  /// 건물 안에서 찾아 들어가는 법. 도착 안내 밑에 붙인다.
+  var access: String?
 
   var at: LatLng { LatLng(lat: lat, lng: lng) }
 }

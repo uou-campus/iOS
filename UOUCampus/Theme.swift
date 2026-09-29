@@ -26,6 +26,7 @@ enum Palette {
   /// 울산대 CI 그린.
   static let accent = UIColor(hex: 0x16A152)
   static let warn = UIColor(hex: 0xB45309)
+  static let error = UIColor(hex: 0xB91C1C)
   static let here = UIColor(hex: 0x2563EB)
 }
 

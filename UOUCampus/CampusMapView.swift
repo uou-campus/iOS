@@ -433,9 +433,12 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
     case .from: (Palette.accent, .white, .white)
     case .to: (Palette.gray900, .white, .white)
     case .gate: (Palette.gray700, .white, .white)
-    case .place: (.white, Palette.gray400, Palette.gray500)
+    case .place: place.node.medical == true
+      ? (Palette.error, .white, .white)
+      : (.white, Palette.gray400, Palette.gray500)
     }
-    let text = place.role == .from ? "출발" : place.role == .to ? "도착" : place.node.no.map { String($0) } ?? ""
+    let cross = !endpoint && place.node.no == nil && place.node.medical == true
+    let text = place.role == .from ? "출발" : place.role == .to ? "도착" : cross ? "+" : place.node.no.map { String($0) } ?? ""
 
     return UIGraphicsImageRenderer(size: CGSize(width: size, height: size)).image { _ in
       let circle = UIBezierPath(ovalIn: CGRect(x: 1, y: 1, width: size - 2, height: size - 2))
@@ -447,7 +450,7 @@ final class MapCoordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDele
       if place.node.precision == "approx" && !endpoint { circle.setLineDash([3, 2], count: 2, phase: 0) }
       circle.stroke()
       let attributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: endpoint ? 10 : 10, weight: .bold), .foregroundColor: ink,
+        .font: UIFont.systemFont(ofSize: cross ? 14 : 10, weight: .bold), .foregroundColor: ink,
       ]
       let label = text as NSString
       let fits = label.size(withAttributes: attributes)
